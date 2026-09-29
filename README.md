@@ -22,3 +22,6 @@ The Agent installation was successful and is now active:
 <img width="2224" height="601" alt="image" src="https://github.com/user-attachments/assets/0d8cd810-46cf-434a-a272-e366c1bcea69" />
 
 
+I also set up a 3rd device, a windows 10 VM with Sysmon and SwiftOnSecurity
+
+<img width="2205" height="942" alt="image" src="https://github.com/user-attachments/assets/dcd58b26-51fc-4537-9f2c-a63928c74796" />
