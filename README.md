@@ -26,4 +26,10 @@ I also set up a 3rd device, a windows 10 VM with Sysmon and SwiftOnSecurity
 
 <img width="2205" height="942" alt="image" src="https://github.com/user-attachments/assets/dcd58b26-51fc-4537-9f2c-a63928c74796" />
 
-(Left off with having Windows 10 and Ubuntu2 connected to Wazuh and need to write rules(STEP 4)).
+With the assistance of claude I created a XML detection rules set in Wazuh to identify malicious behavior using Sysmon telemetry, specifically targeting MITRE ATT&CK techniques like LSASS Memory Dumping.
+
+<img width="1477" height="911" alt="image" src="https://github.com/user-attachments/assets/18cacf35-eed5-40bb-b204-660d0f5a46d2" />
+
+
+
+
