@@ -33,3 +33,4 @@ With the assistance of claude I created a XML detection rules set in Wazuh to id
 
 
 
+
