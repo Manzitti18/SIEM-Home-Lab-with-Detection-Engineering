@@ -31,6 +31,26 @@ With the assistance of claude I created a XML detection rules set in Wazuh to id
 <img width="1477" height="911" alt="image" src="https://github.com/user-attachments/assets/18cacf35-eed5-40bb-b204-660d0f5a46d2" />
 
 
+To validate the rules, I utilized Atomic Red Team to simulate multiple variations of LSASS credential dumping on the Windows endpoint.
+"Invoke-AtomicTest T1003.001" 
 
+The Wazuh agent successfully forwarded the Sysmon Event ID 1 telemetry to the SIEM. The custom XML rules triggered High-Severity (Level 12 and 13) alerts in the Wazuh dashboard, proving the detection pipeline is fully functional.
+
+<img width="2269" height="1149" alt="image" src="https://github.com/user-attachments/assets/57dc8f80-8bff-4a0a-aaf1-4855c89db250" />
+
+I mapped the validated detections back to the MITRE ATT&CK framework to visually document the SIEM's current detection capabilities for Credential Access.
+
+<img width="1158" height="826" alt="image" src="https://github.com/user-attachments/assets/e11e5d7d-7a7a-4fa5-97dd-fe91771d1945" />
+
+
+
+
+
+# Challenges Encountered & Troubleshooting
+* **Telemetry Ingestion Failure:** Initially, the custom rules failed to trigger because the Wazuh agent was not forwarding Sysmon events to the SIEM. I diagnosed the pipeline break by verifying the raw Event ID 1 logs locally in Windows Event Viewer, then elevated Notepad to Administrator to modify `C:\Program Files (x86)\ossec-agent\ossec.conf`. I added a `<localfile>` block for the `Microsoft-Windows-Sysmon/Operational` event channel, restarted the Wazuh service, and successfully restored data flow.
+* **Endpoint Defenses:** Windows Defender initially blocked and quarantined the Atomic Red Team payloads. To ensure the attack execution and log generation succeeded, I manually disabled Real-Time Protection for the duration of the simulation.
+
+# Known Gaps & Future Work
+While OS Credential Dumping via LSASS memory (T1003.001) is now successfully monitored, this project highlighted coverage gaps for other credential access sub-techniques, specifically Security Account Manager (T1003.002) and NTDS (T1003.003). Future iterations will focus on engineering detection rules for these additional vectors.
 
 
